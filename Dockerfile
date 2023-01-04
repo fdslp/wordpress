@@ -1,4 +1,4 @@
-FROM wordpress:6.0.2-php8.1-apache
+FROM wordpress:6.0.3-php8.1-apache
 #RUN docker-php-ext-install mysqli pdo pdo_mysql
 RUN pecl install -o -f redis \
 &&  rm -rf /tmp/pear \
