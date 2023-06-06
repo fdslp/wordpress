@@ -1,4 +1,4 @@
-## Maintained by: [SOLUTEM SRL](https://www.solutema.com/)
+## Maintained by: [SOLUTEMA SRL](https://www.solutema.com/)
 
 This is the Git repo of the [Docker "Official Image"](https://github.com/docker-library/official-images#what-are-official-images) for [`wordpress`](https://hub.docker.com/_/wordpress/) (not to be confused with any official `wordpress` image provided by `wordpress` upstream). See [the Docker Hub page](https://hub.docker.com/_/wordpress/) for the full readme on how to use this Docker image and for information regarding contributing and issues.
 
