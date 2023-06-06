@@ -3,7 +3,8 @@ docker-build:
   image: docker:latest
   stage: build
   variables:
-    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_BRANCH
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:latest
+    TAG: wordpress:6.2.2-php8.1-apache
   services:
     - docker:dind
   before_script:
@@ -12,11 +13,14 @@ docker-build:
   # All other branches are tagged with the escaped branch name (commit ref slug)
   script:
     - docker build --pull -t $IMAGE_TAG .
+    - docker build --pull -t $DOCKER_IO_USER/$TAG .
     - docker push $IMAGE_TAG
+    - docker login -u "$DOCKER_IO_USER" -p "$DOCKER_IO_PASSWORD"
+    - docker push $DOCKER_IO_USER/$TAG
+
+
   # Run this job in a branch where a Dockerfile exists
   rules:
     - if: $CI_COMMIT_BRANCH
       exists:
         - Dockerfile
-
-
