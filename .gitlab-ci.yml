@@ -12,7 +12,12 @@ docker-build:
   # All other branches are tagged with the escaped branch name (commit ref slug)
   script:
     - docker build --pull -t $IMAGE_TAG .
+    - docker build --pull -t $DOCKER_IO_USER/$TAG .
     - docker push $IMAGE_TAG
+    - docker login -u "$DOCKER_IO_USER" -p "$DOCKER_IO_PASSWORD"
+    - docker push $DOCKER_IO_USER/$TAG
+
+
   # Run this job in a branch where a Dockerfile exists
   rules:
     - if: $CI_COMMIT_BRANCH
