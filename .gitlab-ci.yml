@@ -3,18 +3,18 @@ docker-build:
   image: docker:latest
   stage: build
   variables:
-    IMAGE_TAG: $CI_REGISTRY_IMAGE:latest
+    IMAGE: $CI_REGISTRY_IMAGE
     TAG: wordpress:6.2.2-php8.0-apache
   services:
     - docker:dind
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
-    - docker build --pull -t $IMAGE_TAG .
-    - docker build --pull -t $DOCKER_IO_USER/$TAG .
-    - docker push $IMAGE_TAG
-    - docker login -u "$DOCKER_IO_USER" -p "$DOCKER_IO_PASSWORD"
-    - docker push $DOCKER_IO_USER/$TAG
+    - docker build --pull -t $IMAGE:$TAG .
+#    - docker build --pull -t $DOCKER_IO_USER/$TAG .
+    - docker push $IMAGE:$TAG
+#    - docker login -u "$DOCKER_IO_USER" -p "$DOCKER_IO_PASSWORD"
+#    - docker push $DOCKER_IO_USER/$TAG
 
   # Run this job in a branch where a Dockerfile exists
   rules:
