@@ -3,8 +3,8 @@ docker-build:
   image: docker:latest
   stage: build
   variables:
-    IMAGE_TAG: $CI_REGISTRY_IMAGE:6.3.2-php8.1-apache
-    TAG: wordpress:6.3.2-php8.1-apache
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:6.4.1-php8.1-apache
+    TAG: wordpress:6.4.1-php8.1-apache
   services:
     - docker:dind
   before_script:
