@@ -1,4 +1,4 @@
-FROM wordpress:6.4.1-php8.1-apache
+FROM wordpress:6.4.2-php8.1-apache
 #RUN docker-php-ext-install mysqli pdo pdo_mysql soap
 # install the PHP extensions we need
 RUN apt-get update && apt-get install -y libxml2-dev \
