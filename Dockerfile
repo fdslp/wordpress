@@ -1,6 +1,6 @@
 FROM wordpress:6.4.2-php8.1-fpm
 
-RUN apt-get update && apt-get install libphp-predis && \
+RUN apt-get update && apt-get install php-predis && \
     pecl install apcu-beta && echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini && docker-php-ext-enable apcu && \
     pecl install redis && echo extension=redis.so > /usr/local/etc/php/conf.d/redis.ini && docker-php-ext-enable redis
 
